@@ -27,25 +27,29 @@ class KaitouBon(object):
         self.answer_nazo[10] = ['洗濯機', 'せんたくき', 'センタクキ']
         self.answer_last_nazo = ['ドズ主の心', 'どずぬしのこころ', 'ドズヌシノココロ']
 
-
     def _def_text(self):
         self.title = '怪盗ぼんじゅうるからの挑戦状'
-        self.txt_prologue = ''
+        self.txt_prologue = \
+            """
+            怪盗ぼんしゅうるからドズルへ予告状と10個の謎が届きました。\n
+            困ったドズルはあなたたちドズ主に助けを求めています。\n
+            怪盗ぼんじゅうるからドズルのチャンネルを守るため、謎を解き明かし、最後の答えを導いてください。
+            """
         self.last_question = '# 怪盗ぼんじゅうるが盗んだものは何？'
         self.last_answer = '最後の謎の答え'
         self.fail_message = '答えが違うようだ'
         self.txt_epilogue = \
-        """
-        # エピローグ
+            """
+            # エピローグ
 
-        ドズルが無くしたもの...\n
-        一体それはなんだったのでしょうか。\n
-        ここで皆さんは最初のプロローグでのドズルのコメントを思い出す必要がありました。\n
-        そう、ドズルは怪盗じゃない方のぼんじゅうるに「ドズ主の心」を奪われていたのです。\n
-        つまり、最後の回答に「ドズ主の心」を入力したあなたこそが、ドズルチャンネルを守るために必要なものを取り戻した「真のドズ主」です。
+            ドズルが無くしたもの...\n
+            一体それはなんだったのでしょうか。\n
+            ここで皆さんは最初のプロローグでのドズルのコメントを思い出す必要がありました。\n
+            そう、ドズルは怪盗じゃない方のぼんじゅうるに「ドズ主の心」を奪われていたのです。\n
+            つまり、最後の回答に「ドズ主の心」を入力したあなたこそが、ドズルチャンネルを守るために必要なものを取り戻した「真のドズ主」です。
 
-        # 「怪盗ぼんじゅうるからの挑戦状」を遊んでいただきありがとうございました！
-        """
+            # 「怪盗ぼんじゅうるからの挑戦状」を遊んでいただきありがとうございました！
+            """
 
     def _answerbox_generator(self):
         for i in range(1, self.num_nazo+1):
@@ -67,13 +71,14 @@ class KaitouBon(object):
 
     def start(self):
         st.title(self.title)
-        st.write(self.txt_prologue)
 
         # title
         self._screen_image(next(self.img_file_generator))
 
         # prologue
         self._screen_image(next(self.img_file_generator))
+
+        st.write(self.txt_prologue)
 
         # notice
         self._screen_image(next(self.img_file_generator))
